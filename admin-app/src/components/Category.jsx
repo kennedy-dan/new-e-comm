@@ -191,7 +191,7 @@ const Category = (props) => {
   };
   const renderCategories = (categories) => {
     let myCategories = [];
-
+  
     for (let cats of categories) {
       myCategories.push({
         label: cats.name,

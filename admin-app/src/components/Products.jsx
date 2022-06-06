@@ -92,6 +92,7 @@ const Products = (props) => {
   const [productDetails, setproductDetails] = useState(null);
   const category = useSelector((state) => state.category);
   const product = useSelector((state) => state.product);
+  const auth = useSelector(state => state.auth)
 
   const dispatch = useDispatch();
 

@@ -9,8 +9,6 @@ import ProductList from "./components/ProductList";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import { isUserLogged, initialData, getCategories, updateCart } from "./actions";
-
-
 import { useDispatch, useSelector } from "react-redux";
 import ProductDetails from "./components/productDetails";
 import Cart from "./components/cart";

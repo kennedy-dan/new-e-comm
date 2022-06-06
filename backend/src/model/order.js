@@ -25,7 +25,7 @@ const orderSchema = new mongoose.Schema(
             payablePrice: {
                 type: Number,
                 required: true
-            } ,
+            },
             purchasedQuantity: {
                 type: Number,
                 required: true

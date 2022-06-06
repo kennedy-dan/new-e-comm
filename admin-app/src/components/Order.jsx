@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginTop: "2em",
   },
+  active: {
+    background:'#26A541'
+  }
 }));
 
 function getSteps() {

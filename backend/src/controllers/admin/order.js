@@ -6,7 +6,7 @@ exports.updateOrder = (req, res) => {
     {
       $set: {
         "orderStatus.$": [
-          { type:req.body.type, date: new Date(), isCompleted: true },
+          { type: req.body.type, date: new Date(), isCompleted: true },
         ],
       },
     }
