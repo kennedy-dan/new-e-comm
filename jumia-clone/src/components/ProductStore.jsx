@@ -11,6 +11,7 @@ import Divider from "@material-ui/core/Divider";
 import { Grid } from "@material-ui/core";
 import { publicUrl } from "../url";
 import { useState } from "react";
+import {Link} from 'react-router-dom'
 
 /**
  * @author
@@ -45,9 +46,9 @@ const useStyles = makeStyles({
 const ProductStore = (props) => {
   const classes = useStyles();
   const product = useSelector((state) => state.product);
-
+console.log(product)
 const [priceRange, setpriceRange] = useState({
-  under50k:50000,
+  under50k : 50000,
   under100k: 100000,
   under200k: 200000,
   under800k: 800000
@@ -82,6 +83,7 @@ const [priceRange, setpriceRange] = useState({
                 <div className={classes.prods}>
 
                 {product.productsByPrice[key].map((product) => (
+                  <Link to={`/${product.slug}/${product._id}/p`}>
                   <Grid item container direction="row" >
                     <Grid item direction="column">
                       <img
@@ -95,6 +97,7 @@ const [priceRange, setpriceRange] = useState({
                       <Typography className={classes.col}>{product.price}</Typography>
                     </Grid>
                   </Grid>
+                  </Link>
 
                 ))}
                 </div>

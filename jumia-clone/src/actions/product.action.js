@@ -44,3 +44,25 @@ export const getProductPage = (payload) => {
         
     }
 }
+
+export const getProductDetailsByid = (payload) => {
+    return async dispatch => {
+        dispatch({type: productConstants.GET_PRODUCT_DETAIL_BY_ID_REQUEST});
+        let res;
+        try{
+            const {productId} = payload.params;
+            res = await axios.get(`/product/${productId}`)
+            console.log(res);
+            dispatch({
+                type: productConstants.GET_PRODUCT_DETAIL_BY_ID_SUCCESS,
+                payload: { productDetails: res.data.product }
+            })
+        }catch(error){
+            console.log(error)
+            dispatch({
+                type: productConstants.GET_PRODUCT_DETAIL_BY_ID_FAILURE,
+                payload: {error: res.data.error}
+            })
+        }
+    }
+}

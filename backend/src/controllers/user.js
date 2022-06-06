@@ -25,10 +25,12 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-  User.findOne({ email: req.body.email }).exec((err, user) => {
+  User.findOne({ email: req.body.email }).exec(async(err, user) => {
     if (err) return res.status(400).json({ err });
     if (user) {
-      if (user.authenticate(req.body.password)) {
+  const promise = await user.authenticate(req.body.password)
+
+      if ( promise && user.role === 'user') {
         const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT, {
           expiresIn: "1d",
         });
@@ -45,5 +47,28 @@ exports.signin = (req, res) => {
     }
   });
 };
+
+// exports.signin = (req, res) => {
+//   User.findOne({ email: req.body.email }).exec((err, user) => {
+//     if (err) return res.status(400).json({ err });
+//     if (user) {
+//       if (user.authenticate(req.body.password) && user.role === 'user') {
+//         const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT, {
+//           expiresIn: "1d",
+//         });
+//         const { _id, firstName, lastName, email, role, fullName } = user;
+//         res.cookie('token',token,{expiresIn: '1d'})
+//         res.status(200).json({
+//           token,
+//           user: { _id, firstName, lastName, email, role, fullName },
+//         });
+//       } else {
+//         return res.status(400).json({ msg: "invalid password" });
+//       }
+//     } else {
+//       return res.status(400).json({ msg: "admin not registered" });
+//     }
+//   });
+// };
 
 

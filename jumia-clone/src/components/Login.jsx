@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import { Button, Card, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {login} from '../actions'
+import { Redirect } from "react-router-dom";
+
 /**
  * @author
  * @function Login
@@ -23,9 +25,22 @@ const Login = (props) => {
   const classes = useStyles();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState("")
+  const auth = useSelector(state => state.auth)
   const dispatch = useDispatch()
   const userLogin = () => {
     dispatch(login({email, password}))
+  }
+  useEffect(() => {
+    if(auth.authenticate){
+      
+    }
+    
+  }, [auth.authenticate])
+  
+  if(auth.authenticate){
+    return <Redirect to = {'/'}/>
+  }else{
+    console.log('object');
   }
   return (
     <Grid container direction="column">

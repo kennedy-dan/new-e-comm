@@ -13,6 +13,12 @@ const productRoute = require('./routes/product')
 const cartRoute = require('./routes/cart')
 const initData = require('./routes/admin/initData');
 const pageRoute = require('./routes/admin/page');
+const addressRoute = require('./routes/address');
+const orderRoute = require('./routes/order');
+const adminOrderRoute = require('./routes/admin/order');
+
+
+
 
 
 mongoose.connect("mongodb://localhost:27017/jumia", {
@@ -34,6 +40,9 @@ app.use('/api', productRoute)
 app.use('/api', cartRoute)
 app.use('/api', initData)
 app.use('/api', pageRoute)
+app.use('/api', addressRoute)
+app.use('/api', orderRoute)
+app.use('/api', adminOrderRoute)
 
 
 

@@ -17,10 +17,10 @@ const cartSchema = new mongoose.Schema(
                 type: Number,
                 default: 1
             },
-            price: {
-                type: String,
-                required: true
-            }
+            // price: {
+            //     type: String,
+            //     required: true
+            // }
         }
     ]
   },
